@@ -16,10 +16,10 @@ class TaskService
         return $this->task->orderByDesc("created_at")->get();
     }
 
-    public function update($id,bool $isCompleted): array|Collection|Task
+    public function update($id,array $isCompleted): array|Collection|Task
     {
         $data = $this->task->findOrFail($id);
-        $data->update(['is_completed' => $isCompleted]);
+        $data->update($isCompleted);
         return $data;
     }
 
